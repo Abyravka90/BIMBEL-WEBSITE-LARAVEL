@@ -41,7 +41,6 @@
                      <div class="col-md-4 offset-md-4">
                          <form action="{{ url('programs/import') }}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            <input type="hidden" name="test" value="test">
                              <div class="form-group">
                                  <label>Import Data Program</label>
                                  <input type="file" name="excel" class="form-control @error('excel') is-invalid @enderror" value="{{ old('excel') }}" autofocus>

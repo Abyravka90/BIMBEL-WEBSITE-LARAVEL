@@ -230,6 +230,13 @@ class ProgramController extends Controller
 
     public function importProcess(Request $request)
     {   
+        $request->validate([
+            'excel' => 'required|mimes:xls,xlsx'
+        ],[
+            'excel.required' => 'format tidak boleh kosong',
+            'excel.mimes' => 'tipe format harus bertipe excel'
+        ]);
+
         Excel::import(new ProgramImport, $request->file('excel'));
         return redirect('programs')->with('status', 'Data Berhasil diimport');
     }
