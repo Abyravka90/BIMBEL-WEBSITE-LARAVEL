@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Maatwebsite\Excel\Facades\Excel;
-use App\Exports\ProgramExport;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,7 +31,7 @@ Route::delete('edulevels/{id}', 'EdulevelController@delete');
 Route::get('programs/trash', 'ProgramController@trash');
 Route::get('programs/restore/{id?}', 'ProgramController@restore');
 Route::get('programs/delete/{id?}', 'ProgramController@delete');
-Route::get('programs/export', function(){
-    return Excel::download(new ProgramExport, 'program.xlsx');
-});
+Route::get('programs/export', 'ProgramController@export');
+Route::get('programs/import', 'ProgramController@import');
+Route::post('programs/import', 'ProgramController@importProcess');
 Route::resource('programs', 'ProgramController');

@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Program;
 use App\Edulevel;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ProgramExport;
+use App\Imports\ProgramImport;
+
 
 class ProgramController extends Controller
 {
@@ -212,5 +216,21 @@ class ProgramController extends Controller
             $programs = Program::onlyTrashed()->forceDelete();
         }
         return redirect('programs/trash')->with('status', 'Data Berhasil Di Hapus permanen!'); 
+    }
+
+    public function export() 
+    {
+        return Excel::download(new ProgramExport, 'program.xlsx');
+    }
+    
+    public function import()
+    {
+        return view('program.import');
+    }
+
+    public function importProcess(Request $request)
+    {   
+        Excel::import(new ProgramImport, $request->file('excel'));
+        return redirect('programs')->with('status', 'Data Berhasil diimport');
     }
 }

@@ -14,6 +14,8 @@ class Program extends Model
     // protected $fillable['name'];
     protected $guarded=['student_max'];
 
+    protected $fillable = ['edulevel_id', 'name', 'student_price', 'info'];
+
     public function edulevel(){
         return $this->belongsTo('App\Edulevel');
     }

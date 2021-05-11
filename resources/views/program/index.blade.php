@@ -39,6 +39,7 @@
                 </div>
                 <div class="pull-right">
                     <a href="{{ url('programs/export') }}" class="btn btn-sm btn-success"><i class="fa fa-download"></i>&nbsp;unduh excel</a>
+                    <a href="{{ url('programs/import') }}" class="btn btn-sm btn-info"><i class="fa fa-upload"></i>&nbsp;unggah excel</a>
                     <a href="{{ url('programs/create') }}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i>&nbsp;Add</a>
                     <a href="{{ url('programs/trash') }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>&nbsp;trash</a>
                 </div>
